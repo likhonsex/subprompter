@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --primary-500: #00A99D;
+    --primary-400: #26BFB3;
+    --primary-700: #00847B;
+    --bg-page: #000000;
+    --bg-surface-1: #0A0A0A;
+    --bg-surface-2: #111111;
+    --bg-surface-3: #1A1A1A;
+    --text-primary: #EDEDED;
+    --text-secondary: #888888;
+    --text-tertiary: #666666;
+    --border-default: rgba(255,255,255,0.08);
+    --border-interactive: rgba(255,255,255,0.12);
+    --border-focus: var(--primary-500);
+    --success: #0070F3;
+    --warning: #F5A623;
+    --error: #EE0000;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --mobile-nav-height: 56px;
+  }
+  html { color-scheme: dark; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { height: 100%; height: -webkit-fill-available; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+#root { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
+.font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+}
+
+*:focus { outline: none; }
+*:focus-visible { outline: 2px solid var(--primary-500); outline-offset: 2px; }
+button, a, [role="button"], input, select, textarea { touch-action: manipulation; }
+
+@media (max-width: 767px) {
+  input, select, textarea { font-size: 16px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.shadow-layered { box-shadow: 0 0 0 1px var(--border-default), 0 2px 4px rgba(0,0,0,0.3), 0 8px 16px rgba(0,0,0,0.4); }
+.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: scale(1); } }
+.animate-fade-in { animation: fadeIn 200ms ease-out forwards; }
+.animate-slide-up { animation: slideUp 200ms ease-out forwards; }
+.animate-scale-in { animation: scaleIn 150ms ease-out forwards; }
+.transition-colors { transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease; }
+
+.skip-link {
+  position: absolute; top: -40px; left: 0;
+  background: var(--primary-500); color: white;
+  padding: 8px 16px; z-index: 100; text-decoration: none;
+}
+.skip-link:focus { top: 0; }
